@@ -36,6 +36,12 @@ export default function Pricing() {
                   <li>EQ 밸런스 조정</li>
                   <li className="text-muted">고급 리마스터링</li>
                 </ul>
+                <button 
+                  onClick={() => handleSelectPackage('베이직')}
+                  className="btn btn-outline-primary w-100"
+                >
+                  신청하기
+                </button>
               </div>
             </div>
           </div>
@@ -51,6 +57,12 @@ export default function Pricing() {
                   <li>스테레오 이미지 향상</li>
                   <li>48kHz/24bit 업샘플링</li>
                 </ul>
+                <button 
+                  onClick={() => handleSelectPackage('프리미엄')}
+                  className="btn btn-primary w-100"
+                >
+                  가장 인기!
+                </button>
               </div>
             </div>
           </div>
@@ -66,6 +78,12 @@ export default function Pricing() {
                   <li>멀티트랙 믹싱</li>
                   <li>마스터링 + DDP</li>
                 </ul>
+                <button 
+                  onClick={() => handleSelectPackage('커스텀')}
+                  className="btn btn-outline-primary w-100"
+                >
+                  문의하기
+                </button>
               </div>
             </div>
           </div>
