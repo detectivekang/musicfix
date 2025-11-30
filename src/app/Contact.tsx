@@ -109,6 +109,57 @@ export default function Contact() {
               </div>
             </div>
           </div>
+          <form onSubmit={handleSubmit} style={{ display: 'none' }}>
+                <input
+                  name="gubun"
+                  value={formData.gubun}
+                  onChange={handleChange}
+                  placeholder="문의 구분"
+                  className="form-control mb-2"
+                />
+
+                <input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="이름"
+                  required
+                  className="form-control mb-2"
+                />
+
+                <input
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="이메일"
+                  required
+                  className="form-control mb-2"
+                />
+
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="문의 내용"
+                  required
+                  className="form-control mb-3"
+                />
+
+                <button
+                  type="submit"
+                  className="btn btn-dark w-100"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? '전송중...' : '문의 보내기'}
+                </button>
+
+                {submitStatus === 'success' && (
+                  <p className="text-success mt-3">✅ 문의 접수 완료!</p>
+                )}
+                {submitStatus === 'error' && (
+                  <p className="text-danger mt-3">❌ 전송 실패. 다시 시도해주세요.</p>
+                )}
+              </form>
         </div>
       </div>
     </section>
