@@ -12,7 +12,7 @@ export default function About() {
             />
           </div>
           <div className="col-lg-6 order-lg-1">
-            <h2 className="fw-bold mb-3">소개</h2>
+            <h2 className="fw-bold mb-3">인사말</h2>
             <p className="mb-3">
               오랫동안 일본에서의 연주활동과 관악기리페어를 공부하고 충남 서산에서 관악기수리전문점을 운영하고 있습니다.
               연주자출신 리페어맨으로서 연주자와의 소통을 중요시하며 장인정신을 바탕으로 정성을 다해 수리하고 있습니다.
