@@ -6,7 +6,7 @@ export default function About() {
         <div className="row align-items-center g-5">
           <div className="col-lg-6 order-lg-2 text-center">
             <img
-              src="/images/profile.jpg"
+              src="/musicfix/images/profile.jpg"
               className="img-fluid rounded-4 shadow"
               alt="Studio"
             />

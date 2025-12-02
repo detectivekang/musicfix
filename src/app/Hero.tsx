@@ -7,7 +7,7 @@ export default function Hero() {
       style={{
         background:
           // 'url("https://previews.123rf.com/images/xavigm/xavigm1801/xavigm180100122/92856466-instrument-in-wood-background.jpg") center/cover no-repeat',
-          'url("/images/logo.jpg") center/cover no-repeat',
+          'url("/musicfix/images/logo.jpg") center/cover no-repeat',
       }}
     >
       <div
