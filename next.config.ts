@@ -1,30 +1,19 @@
-// next.config.js
-
-const isProd = process.env.NODE_ENV === 'production';
-
+// next.config.js (또는 next.config.mjs)
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 1. Base Path 설정:
-  // GitHub Pages 저장소 이름(musicfix)을 기본 경로로 설정합니다.
-  // 이 설정을 통해 코드의 모든 상대 경로(/images/...)가
-  // /musicfix/images/... 로 자동 변환됩니다.
-  basePath: isProd ? '/musicfix' : '',
-  
-  // 2. Asset Prefix 설정 (선택 사항이지만 권장):
-  // 정적 자산(CSS, JS, 이미지 등)의 URL 앞에 붙는 접두사를 지정합니다.
-  assetPrefix: isProd ? '/musicfix/' : '', 
-  
-  // 3. 정적 내보내기 설정 (GitHub Pages 필수):
-  // Next.js를 정적 HTML/CSS/JS 파일로 빌드하도록 지정하여
-  // GitHub Pages에서 호스팅할 수 있게 합니다.
-  output: 'export',
-  
-  // 4. 이미지를 next/image로 사용하는 경우 도메인 설정 (필요에 따라 추가)
-  // images: {
-  //   unoptimized: true, // next/image 최적화 비활성화 (정적 export 시 필요)
-  // },
+  // 🚨 정적 HTML 파일 생성을 위해 이 설정을 추가합니다.
+  output: 'export', 
 
-  // 기타 기존 설정은 그대로 유지하시면 됩니다.
+  // (선택 사항) GitHub Pages는 서브 경로로 배포될 수 있으므로 base path 설정
+  // 레포지토리 이름이 'my-repo'라면 '/my-repo'로 설정합니다.
+  // 이 설정을 추가하면 Image 컴포넌트의 경로 문제도 해결될 수 있습니다.
+  basePath: process.env.NODE_ENV === 'production' ? '/[당신의 레포지토리 이름]' : '',
+
+  // (선택 사항) next/image 최적화 비활성화
+  // GitHub Pages는 이미지 최적화 서버를 제공하지 않으므로 비활성화해야 빌드 에러를 피할 수 있습니다.
+  images: {
+    unoptimized: true,
+  },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
