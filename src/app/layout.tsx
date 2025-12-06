@@ -4,8 +4,8 @@ import './globals.css';
 import { Metadata } from 'next';
 import Head from 'next/head';
 export const metadata: Metadata = {
-  title: 'MusicFix | 고장 난 음악, 우리가 고칩니다',
-  description: '악기 수리 서비스',
+  title: '제이디라보 | 관악기수리공방',
+  description: '관악기의 모든 것, 관악기 수리 전문가',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
