@@ -11,10 +11,25 @@
   }
 }
 
+/* 화면 너비가 768px 이상일 때 (갤럭시가로모드) */
+@media (min-width: 820px) {
+  .heroContainer {
+    min-height: 15dvh;
+  }
+  /* 상품 이미지 크기 */
+  .pricingSection img{
+    width: 150px;
+  }
+}
+
 /* 화면 너비가 1200px 이상일 때 (데스크톱) */
 @media (min-width: 1200px) {
   .heroContainer {
     /* 데스크톱에서는 100dvh (전체 화면) */
     min-height: 100dvh; 
+  }
+  /* 상품 이미지 크기 */
+  .pricingSection img{
+    width: 300px;
   }
 }

@@ -1,6 +1,6 @@
 // components/Pricing.tsx
 "use client"; // 클라이언트 컴포넌트로 변경
-
+import styles from "./Hero.module.css";
 import { useRouter } from 'next/navigation';
 
 export default function Pricing() {
@@ -20,7 +20,7 @@ export default function Pricing() {
   };
 
   return (
-    <section id="pricing" className="py-5">
+    <section id="pricing"  className={`py-5 ${styles.pricingSection}`}>
       <div className="container">
         <h2 className="fw-bold text-center mb-5">수리 비용</h2>
         <div className="row justify-content-center g-4">
