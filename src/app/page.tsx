@@ -5,8 +5,11 @@ import History from './History';
 import Pricing from './Pricing';
 import Contact from './Contact';
 import Footer from './Footer';
-// 🚨 Suspense를 import 합니다.
+
 import { Suspense } from 'react';
+
+// ⭐ Reveal 컴포넌트 import
+import Reveal from '@/components/Reveal';
 
 // 로딩 중 표시할 fallback UI
 const LoadingFallback = () => <div>Loading content...</div>;
@@ -14,14 +17,32 @@ const LoadingFallback = () => <div>Loading content...</div>;
 export default function Home() {
   return (
     <>
-      {/* 🚨 전체 콘텐츠를 <Suspense>로 감쌉니다. */}
       <Suspense fallback={<LoadingFallback />}>
-        <Hero />
-        <About />
-        <History />
-        <Pricing />
-        <Contact />
-        <Footer />
+        
+        <Reveal>
+          <Hero />
+        </Reveal>
+
+        <Reveal>
+          <About />
+        </Reveal>
+
+        <Reveal>
+          <History />
+        </Reveal>
+
+        <Reveal>
+          <Pricing />
+        </Reveal>
+
+        <Reveal>
+          <Contact />
+        </Reveal>
+
+        <Reveal>
+          <Footer />
+        </Reveal>
+        
       </Suspense>
     </>
   );
