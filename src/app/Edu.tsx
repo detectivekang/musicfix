@@ -42,7 +42,7 @@ const RepairGallery = ({
       {Array.from({ length: imageCount }).map((_, index) => (
         <div key={index} className="col-6 col-sm-4 col-md-3">
           <Image
-            src={`/images/${imageBaseUrl}_${index + 1}.png`}
+            src={`/musicfix/images/${imageBaseUrl}_${index + 1}.png`}
             alt={`${title} 사진 ${index + 1}`}
             width={300}
             height={300}
@@ -126,7 +126,7 @@ const LightboxModal = ({
             )}
 
             <Image
-              src={`/images/${baseUrl}_${index + 1}.png`}
+              src={`/musicfix/images/${baseUrl}_${index + 1}.png`}
               alt={`${itemTitle} ${index + 1}`}
               width={800}
               height={800}
