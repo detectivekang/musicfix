@@ -18,7 +18,6 @@ const RepairGallery = ({
       {title} ({imageCount}컷)
     </h5>
 
-    {/* description은 JSX */}
     <div className="small text-muted text-start border-bottom pb-2 mb-3">
       {description}
     </div>
@@ -52,22 +51,24 @@ const RepairGallery = ({
 );
 
 // ===============================
-// 라이트박스 모달 (Fixing과 동일)
+// 라이트박스 모달 (Hook 규칙 준수)
 // ===============================
 const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }) => {
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [isOpen, onClose]);
+
   if (!isOpen || !currentImage) return null;
 
   const { index, count, baseUrl, itemTitle } = currentImage;
   const currentSrc = `/images/${baseUrl}_${index + 1}.png`;
-
-  // ESC 닫기
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [onClose]);
 
   return (
     <div
@@ -86,7 +87,10 @@ const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }) => {
             style={{ zIndex: 1051 }}
           />
 
-          <div className="modal-body text-center position-relative p-0">
+          <div
+            className="modal-body text-center position-relative p-0"
+            style={{ overflow: "auto", maxHeight: "100vh" }}
+          >
             <h4 className="text-white mb-2">
               {itemTitle} ({index + 1} / {count})
             </h4>
@@ -104,9 +108,13 @@ const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }) => {
 
             <img
               src={currentSrc}
-              className="img-fluid rounded"
-              style={{ maxHeight: "90vh" }}
               alt=""
+              style={{
+                transform: "scale(2)",
+                transformOrigin: "center",
+                margin: "60px auto",
+                display: "block",
+              }}
             />
 
             {/* 다음 */}
@@ -151,7 +159,6 @@ export default function Edu() {
 
   return (
     <section id="edu" className="bg-light py-5">
-      {/* 라이트박스 */}
       <LightboxModal
         isOpen={!!lightbox}
         currentImage={lightbox}
