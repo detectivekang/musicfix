@@ -116,37 +116,38 @@ const LightboxModal = ({
             style={{ zIndex: 1051 }}
           />
 
-          <div
-            className="modal-body text-center position-relative p-0"
-            style={{ overflow: "auto", maxHeight: "100vh" }}
-          >
+          <div className="modal-body text-center position-relative p-0">
             <h4 className="text-white mb-2">
               {itemTitle} ({index + 1} / {count})
             </h4>
 
+            {/* 이전 버튼 */}
             {index > 0 && (
               <button
                 className="btn btn-secondary position-absolute top-50 start-0 translate-middle-y ms-3 fs-3"
                 onClick={() => onNavigate(-1)}
-                style={{ width: "40px", height: "60px" }}
+                style={{ width: "40px", height: "60px", zIndex: 1051 }}
               >
                 &lt;
               </button>
             )}
 
-            <Image
-              src={`/musicfix/images/${baseUrl}_${index + 1}.png`}
-              alt={`${itemTitle} ${index + 1}`}
-              width={800}
-              height={800}
-              style={{ maxHeight: "90vh", objectFit: "contain" }}
-            />
+            {/* 이미지 컨테이너 */}
+            <div style={{ position: "relative", width: "100%", height: "80vh", margin: "0 auto" }}>
+              <Image
+                src={`/musicfix/images/${baseUrl}_${index + 1}.png`}
+                alt={`${itemTitle} 사진 ${index + 1}`}
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </div>
 
+            {/* 다음 버튼 */}
             {index < count - 1 && (
               <button
                 className="btn btn-secondary position-absolute top-50 end-0 translate-middle-y me-3 fs-3"
                 onClick={() => onNavigate(1)}
-                style={{ width: "40px", height: "60px" }}
+                style={{ width: "40px", height: "60px", zIndex: 1051 }}
               >
                 &gt;
               </button>
