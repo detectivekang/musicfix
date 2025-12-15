@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import Image from "next/image"; // ✅ next/image 사용
 
 // ===============================
 // 재사용 가능한 갤러리 컴포넌트
@@ -25,14 +26,11 @@ const RepairGallery = ({
     <div className="row g-2">
       {Array.from({ length: imageCount }).map((_, index) => (
         <div key={index} className="col-6 col-sm-4 col-md-3">
-          <img
-            src={`/images/${imageBaseUrl}_${index + 1}.png`}
-            alt={`${title} 사진 ${index + 1}`}
-            className="img-fluid rounded border shadow-sm"
+          <div
             style={{
-              aspectRatio: "1/1",
-              objectFit: "cover",
+              position: "relative",
               width: "100%",
+              aspectRatio: "1/1",
               cursor: "pointer",
             }}
             onClick={() =>
@@ -43,7 +41,14 @@ const RepairGallery = ({
                 itemTitle: title,
               })
             }
-          />
+          >
+            <Image
+              src={`/images/${imageBaseUrl}_${index + 1}.png`}
+              alt={`${title} 사진 ${index + 1}`}
+              fill
+              style={{ objectFit: "cover", borderRadius: "0.25rem" }}
+            />
+          </div>
         </div>
       ))}
     </div>
@@ -51,7 +56,7 @@ const RepairGallery = ({
 );
 
 // ===============================
-// 라이트박스 모달 (Hook 규칙 준수)
+// 라이트박스 모달
 // ===============================
 const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }) => {
   useEffect(() => {
@@ -68,25 +73,19 @@ const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }) => {
   if (!isOpen || !currentImage) return null;
 
   const { index, count, baseUrl, itemTitle } = currentImage;
-  const currentSrc = `/images/${baseUrl}_${index + 1}.png`;
 
   return (
     <div
       className="modal d-block"
-      style={{
-        backgroundColor: "rgba(0,0,0,0.9)",
-        zIndex: 1050,
-      }}
+      style={{ backgroundColor: "rgba(0,0,0,0.9)", zIndex: 1050 }}
     >
       <div className="modal-dialog modal-xl modal-dialog-centered">
         <div className="modal-content bg-transparent border-0">
-          {/* 닫기 */}
           <button
             className="btn-close btn-close-white position-absolute top-0 end-0 m-3"
             onClick={onClose}
             style={{ zIndex: 1051 }}
           />
-
           <div
             className="modal-body text-center position-relative p-0"
             style={{ overflow: "auto", maxHeight: "100vh" }}
@@ -95,7 +94,6 @@ const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }) => {
               {itemTitle} ({index + 1} / {count})
             </h4>
 
-            {/* 이전 */}
             {index > 0 && (
               <button
                 className="btn btn-secondary position-absolute top-50 start-0 translate-middle-y ms-3 fs-3"
@@ -106,18 +104,15 @@ const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }) => {
               </button>
             )}
 
-            <img
-              src={currentSrc}
-              alt=""
-              style={{
-                transform: "scale(2)",
-                transformOrigin: "center",
-                margin: "60px auto",
-                display: "block",
-              }}
-            />
+            <div style={{ position: "relative", width: "100%", height: "80vh", margin: "0 auto" }}>
+              <Image
+                src={`/images/${baseUrl}_${index + 1}.png`}
+                alt={`${itemTitle} 사진 ${index + 1}`}
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </div>
 
-            {/* 다음 */}
             {index < count - 1 && (
               <button
                 className="btn btn-secondary position-absolute top-50 end-0 translate-middle-y me-3 fs-3"
