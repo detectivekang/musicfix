@@ -22,6 +22,7 @@ interface RepairGalleryProps {
 // ===============================
 // 재사용 가능한 갤러리 컴포넌트
 // ===============================
+// === Edu 쪽 RepairGallery 수정 ===
 const RepairGallery = ({
   title,
   description,
@@ -41,13 +42,14 @@ const RepairGallery = ({
     <div className="row g-2">
       {Array.from({ length: imageCount }).map((_, index) => (
         <div key={index} className="col-6 col-sm-4 col-md-3">
-          <Image
-            src={`/musicfix/images/${imageBaseUrl}_${index + 1}.png`}
-            alt={`${title} 사진 ${index + 1}`}
-            width={300}
-            height={300}
-            className="rounded border shadow-sm"
-            style={{ objectFit: "cover", cursor: "pointer" }}
+          {/* 정사각형 비율 + 반응형 */}
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              paddingTop: "100%", /* 1:1 비율 유지 */
+              cursor: "pointer",
+            }}
             onClick={() =>
               onImageClick({
                 index,
@@ -56,7 +58,14 @@ const RepairGallery = ({
                 itemTitle: title,
               })
             }
-          />
+          >
+            <Image
+              src={`/musicfix/images/${imageBaseUrl}_${index + 1}.png`}
+              alt={`${title} 사진 ${index + 1}`}
+              fill
+              style={{ objectFit: "cover", borderRadius: "0.25rem" }}
+            />
+          </div>
         </div>
       ))}
     </div>
