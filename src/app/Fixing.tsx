@@ -1,13 +1,47 @@
-// components/Fixing.tsx
 "use client";
 import styles from "./Hero.module.css";
-import { useState, useCallback, useEffect } from 'react';
-import Image from "next/image"; // ✅ next/image 사용
+import { useState, useCallback, useEffect } from "react";
+import Image from "next/image";
 
-// === 재사용 가능한 갤러리 컴포넌트 ===
-const RepairGallery = ({ title, description, imageCount, imageBaseUrl, onImageClick }) => (
+// ===============================
+// 타입 정의
+// ===============================
+interface GalleryImage {
+  index: number;
+  count: number;
+  baseUrl: string;
+  itemTitle: string;
+}
+
+interface RepairGalleryProps {
+  title: string;
+  description: string;
+  imageCount: number;
+  imageBaseUrl: string;
+  onImageClick: (imageInfo: GalleryImage) => void;
+}
+
+interface LightboxModalProps {
+  isOpen: boolean;
+  currentImage: GalleryImage | null;
+  onClose: () => void;
+  onNavigate: (direction: number) => void;
+}
+
+// ===============================
+// 재사용 가능한 갤러리 컴포넌트
+// ===============================
+const RepairGallery = ({
+  title,
+  description,
+  imageCount,
+  imageBaseUrl,
+  onImageClick,
+}: RepairGalleryProps) => (
   <div className="card shadow-sm h-100 border-0 mb-4 p-3 bg-white">
-    <h5 className="fw-bold mb-3 text-start text-primary">{title} ({imageCount}컷)</h5>
+    <h5 className="fw-bold mb-3 text-start text-primary">
+      {title} ({imageCount}컷)
+    </h5>
     <p className="small text-muted text-start border-bottom pb-2 mb-3">{description}</p>
 
     <div className="row g-2">
@@ -21,12 +55,7 @@ const RepairGallery = ({ title, description, imageCount, imageBaseUrl, onImageCl
               cursor: "pointer",
             }}
             onClick={() =>
-              onImageClick({
-                index,
-                count: imageCount,
-                baseUrl: imageBaseUrl,
-                itemTitle: title,
-              })
+              onImageClick({ index, count: imageCount, baseUrl: imageBaseUrl, itemTitle: title })
             }
           >
             <Image
@@ -42,11 +71,13 @@ const RepairGallery = ({ title, description, imageCount, imageBaseUrl, onImageCl
   </div>
 );
 
-// === Lightbox 모달 ===
-const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }) => {
+// ===============================
+// Lightbox 모달
+// ===============================
+const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }: LightboxModalProps) => {
   useEffect(() => {
     if (!isOpen) return;
-    const handleEscape = (event) => {
+    const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
     };
     document.addEventListener("keydown", handleEscape);
@@ -110,14 +141,16 @@ const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }) => {
   );
 };
 
-// === Fixing 페이지 ===
+// ===============================
+// Fixing 페이지
+// ===============================
 export default function Fixing() {
-  const [activeTab, setActiveTab] = useState("woodwind");
-  const [lightbox, setLightbox] = useState(null);
+  const [activeTab, setActiveTab] = useState<"woodwind" | "brass">("woodwind");
+  const [lightbox, setLightbox] = useState<GalleryImage | null>(null);
 
-  const handleImageClick = useCallback((imageInfo) => setLightbox(imageInfo), []);
+  const handleImageClick = useCallback((imageInfo: GalleryImage) => setLightbox(imageInfo), []);
   const handleCloseLightbox = useCallback(() => setLightbox(null), []);
-  const handleNavigate = useCallback((direction) => {
+  const handleNavigate = useCallback((direction: number) => {
     setLightbox((prev) => {
       if (!prev) return null;
       const newIndex = prev.index + direction;
@@ -142,7 +175,9 @@ export default function Fixing() {
         <ul className="nav nav-pills justify-content-center mb-5" role="tablist">
           <li className="nav-item" role="presentation">
             <button
-              className={`nav-link fs-5 me-2 ${activeTab === "woodwind" ? "active bg-info text-dark" : "btn-outline-secondary"}`}
+              className={`nav-link fs-5 me-2 ${
+                activeTab === "woodwind" ? "active bg-info text-dark" : "btn-outline-secondary"
+              }`}
               onClick={() => setActiveTab("woodwind")}
               type="button"
             >
@@ -151,7 +186,9 @@ export default function Fixing() {
           </li>
           <li className="nav-item" role="presentation">
             <button
-              className={`nav-link fs-5 ${activeTab === "brass" ? "active bg-warning text-dark" : "btn-outline-secondary"}`}
+              className={`nav-link fs-5 ${
+                activeTab === "brass" ? "active bg-warning text-dark" : "btn-outline-secondary"
+              }`}
               onClick={() => setActiveTab("brass")}
               type="button"
             >
@@ -169,11 +206,10 @@ export default function Fixing() {
             </h4>
 
             <div className="row g-4">
-              {/* 각 수리 항목 */}
               <div className="col-12">
                 <RepairGallery
                   title="섹소폰의 오버홀"
-                  description="전체 분해 세척을 포함하며, 연주자 출신의 노하우로 실제 연주 테스트까지 마친 악기를 고객님께 전달합니다."
+                  description="전체 분해 세척, 연주 테스트까지 완료"
                   imageCount={8}
                   imageBaseUrl="woodwind/overhaul"
                   onImageClick={handleImageClick}
@@ -182,7 +218,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="키컵 수평 작업"
-                  description="틀어진 키컵은 최대한 평평하게 작업을 해줍니다."
+                  description="틀어진 키컵 평평하게 작업"
                   imageCount={2}
                   imageBaseUrl="woodwind/key_pad"
                   onImageClick={handleImageClick}
@@ -191,7 +227,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="패드클리닝"
-                  description="전체분해 세척작업의 경우 패드도 같이 클리닝하여 수명을 늘려줍니다."
+                  description="전체분해 세척 작업 시 패드도 클리닝"
                   imageCount={2}
                   imageBaseUrl="woodwind/cleaning_pad"
                   onImageClick={handleImageClick}
@@ -209,7 +245,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="덴트 작업"
-                  description="낙상사고등으로 인한 덴트를 최대한 티안나게 작업하고 있습니다."
+                  description="낙상사고 등 덴트 최소화 작업"
                   imageCount={2}
                   imageBaseUrl="woodwind/cleaning_dent"
                   onImageClick={handleImageClick}
@@ -217,8 +253,8 @@ export default function Fixing() {
               </div>
               <div className="col-12">
                 <RepairGallery
-                  title="클라리넷의 오버홀 및 크랙 수리"
-                  description="클라리넷의 오버홀 및 전체 분해 세척, 크랙(갈라짐) 수리를 진행합니다."
+                  title="클라리넷 오버홀 및 크랙 수리"
+                  description="전체 분해 세척 및 크랙 수리 진행"
                   imageCount={6}
                   imageBaseUrl="woodwind/clarinet"
                   onImageClick={handleImageClick}
@@ -227,7 +263,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="땜 작업 (용접)"
-                  description="용접이 떨어진 부품은 부위에 맞게 납, 은, 동땜을 합니다."
+                  description="납, 은, 동땜으로 부품 복원"
                   imageCount={4}
                   imageBaseUrl="woodwind/soldering"
                   onImageClick={handleImageClick}
@@ -246,7 +282,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="트럼펫 분해세척 광택작업"
-                  description="트럼펫, 트럼본, 호른, 튜바 등의 금관악기는 전체 분해 세척, 녹 제거, 광택작업을 주로 합니다."
+                  description="전체 분해 세척, 녹 제거, 광택"
                   imageCount={3}
                   imageBaseUrl="brass/trumpet_cleaning"
                   onImageClick={handleImageClick}
@@ -255,7 +291,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="로터리 분해 세척 및 녹 제거"
-                  description="트럼펫, 트럼본, 호른, 튜바 등의 금관악기 로터리를 완전 분해하여 세척하고 녹을 제거합니다."
+                  description="완전 분해 후 녹 제거"
                   imageCount={2}
                   imageBaseUrl="brass/rotary_cleaning"
                   onImageClick={handleImageClick}
@@ -264,7 +300,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="튜바 슬라이드 세척 및 녹 제거"
-                  description="튜바 슬라이드의 마찰을 줄이고 부드러운 움직임을 위해 세척 및 녹 제거를 합니다."
+                  description="부드러운 움직임 위해 세척 및 녹 제거"
                   imageCount={2}
                   imageBaseUrl="brass/tuba_slide"
                   onImageClick={handleImageClick}
@@ -273,7 +309,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="용접 작업 및 땜 복원"
-                  description="땜이 떨어진 부품은 용접 부위에 맞게 납, 은, 동을 사용하여 견고하게 땜을 합니다."
+                  description="부품 맞게 납, 은, 동 사용"
                   imageCount={6}
                   imageBaseUrl="brass/soldering"
                   onImageClick={handleImageClick}
