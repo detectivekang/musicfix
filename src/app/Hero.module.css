@@ -9,11 +9,7 @@
   .heroContainer {
     min-height: 50dvh;
   }
-  /* 상품 이미지 크기 */
-  /* .pricingSection img{
-    width: 150px;
-  } */
-}
+ }
 
 
 
@@ -23,8 +19,4 @@
     /* 데스크톱에서는 100dvh (전체 화면) */
     min-height: 100dvh; 
   }
-  /* 상품 이미지 크기 */
-  /* .pricingSection img{
-    width: 300px;
-  } */
 }

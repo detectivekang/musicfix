@@ -2,7 +2,6 @@
 import Hero from './Hero';
 import About from './About';
 import History from './History';
-// import Pricing from './Pricing';
 import Contact from './Contact';
 import Footer from './Footer';
 
