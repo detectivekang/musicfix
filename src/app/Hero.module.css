@@ -10,9 +10,9 @@
     min-height: 50dvh;
   }
   /* 상품 이미지 크기 */
-  .pricingSection img{
+  /* .pricingSection img{
     width: 150px;
-  }
+  } */
 }
 
 
@@ -24,7 +24,7 @@
     min-height: 100dvh; 
   }
   /* 상품 이미지 크기 */
-  .pricingSection img{
+  /* .pricingSection img{
     width: 300px;
-  }
+  } */
 }
