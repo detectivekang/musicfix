@@ -4,26 +4,31 @@
 import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 
+interface GalleryImage {
+  index: number;
+  count: number;
+  baseUrl: string;
+  itemTitle: string;
+}
+
 interface RepairGalleryProps {
   title: string;
   description: React.ReactNode;
   imageCount: number;
   imageBaseUrl: string;
-  onImageClick: (info: {
-    index: number;
-    count: number;
-    baseUrl: string;
-    itemTitle: string;
-  }) => void;
+  onImageClick: (imageInfo: GalleryImage) => void;
 }
 
-const RepairGallery: React.FC<RepairGalleryProps> = ({
+// ===============================
+// 재사용 가능한 갤러리 컴포넌트
+// ===============================
+const RepairGallery = ({
   title,
   description,
   imageCount,
   imageBaseUrl,
   onImageClick,
-}) => (
+}: RepairGalleryProps) => (
   <div className="card shadow-sm h-100 border-0 mb-4 p-3 bg-white">
     <h5 className="fw-bold mb-3 text-start text-primary">
       {title} ({imageCount}컷)
@@ -39,9 +44,10 @@ const RepairGallery: React.FC<RepairGalleryProps> = ({
           <Image
             src={`/images/${imageBaseUrl}_${index + 1}.png`}
             alt={`${title} 사진 ${index + 1}`}
-            width={500}
-            height={500}
-            style={{ objectFit: "cover", width: "100%", cursor: "pointer" }}
+            width={300}
+            height={300}
+            className="rounded border shadow-sm"
+            style={{ objectFit: "cover", cursor: "pointer" }}
             onClick={() =>
               onImageClick({
                 index,
@@ -57,30 +63,29 @@ const RepairGallery: React.FC<RepairGalleryProps> = ({
   </div>
 );
 
+// ===============================
+// 라이트박스 모달
+// ===============================
 interface LightboxModalProps {
   isOpen: boolean;
-  currentImage: {
-    index: number;
-    count: number;
-    baseUrl: string;
-    itemTitle: string;
-  } | null;
+  currentImage: GalleryImage | null;
   onClose: () => void;
   onNavigate: (direction: number) => void;
 }
 
-const LightboxModal: React.FC<LightboxModalProps> = ({
+const LightboxModal = ({
   isOpen,
   currentImage,
   onClose,
   onNavigate,
-}) => {
+}: LightboxModalProps) => {
   useEffect(() => {
     if (!isOpen) return;
 
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
+
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
@@ -92,11 +97,7 @@ const LightboxModal: React.FC<LightboxModalProps> = ({
   return (
     <div
       className="modal d-block"
-      style={{
-        backgroundColor: "rgba(0,0,0,0.9)",
-        zIndex: 1050,
-        overflowY: "auto",
-      }}
+      style={{ backgroundColor: "rgba(0,0,0,0.9)", zIndex: 1050 }}
     >
       <div className="modal-dialog modal-xl modal-dialog-centered">
         <div className="modal-content bg-transparent border-0">
@@ -108,7 +109,7 @@ const LightboxModal: React.FC<LightboxModalProps> = ({
 
           <div
             className="modal-body text-center position-relative p-0"
-            style={{ maxHeight: "100vh" }}
+            style={{ overflow: "auto", maxHeight: "100vh" }}
           >
             <h4 className="text-white mb-2">
               {itemTitle} ({index + 1} / {count})
@@ -118,7 +119,7 @@ const LightboxModal: React.FC<LightboxModalProps> = ({
               <button
                 className="btn btn-secondary position-absolute top-50 start-0 translate-middle-y ms-3 fs-3"
                 onClick={() => onNavigate(-1)}
-                style={{ width: "40px", height: "60px", zIndex: 1051 }}
+                style={{ width: "40px", height: "60px" }}
               >
                 &lt;
               </button>
@@ -126,7 +127,7 @@ const LightboxModal: React.FC<LightboxModalProps> = ({
 
             <Image
               src={`/images/${baseUrl}_${index + 1}.png`}
-              alt={`${itemTitle} 사진 ${index + 1}`}
+              alt={`${itemTitle} ${index + 1}`}
               width={800}
               height={800}
               style={{ maxHeight: "90vh", objectFit: "contain" }}
@@ -136,7 +137,7 @@ const LightboxModal: React.FC<LightboxModalProps> = ({
               <button
                 className="btn btn-secondary position-absolute top-50 end-0 translate-middle-y me-3 fs-3"
                 onClick={() => onNavigate(1)}
-                style={{ width: "40px", height: "60px", zIndex: 1051 }}
+                style={{ width: "40px", height: "60px" }}
               >
                 &gt;
               </button>
@@ -148,14 +149,18 @@ const LightboxModal: React.FC<LightboxModalProps> = ({
   );
 };
 
+// ===============================
+// Edu 페이지
+// ===============================
 export default function Edu() {
-  const [lightbox, setLightbox] = useState<LightboxModalProps["currentImage"]>(
-    null
-  );
+  const [lightbox, setLightbox] = useState<GalleryImage | null>(null);
 
-  const handleImageClick = useCallback((imageInfo: any) => {
-    setLightbox(imageInfo);
-  }, []);
+  const handleImageClick = useCallback(
+    (imageInfo: GalleryImage) => {
+      setLightbox(imageInfo);
+    },
+    []
+  );
 
   const handleClose = useCallback(() => {
     setLightbox(null);
@@ -190,8 +195,7 @@ export default function Edu() {
                 <>
                   일본에서 전문적으로 배운 커리큘럼과 현장경험을 바탕으로
                   <br />
-                  경복대학교(남양주)에서 색소폰 리페어를 체계적으로 지도하고
-                  있습니다.
+                  경복대학교(남양주)에서 색소폰 리페어를 체계적으로 지도하고 있습니다.
                   <br />
                   <br />
                   2학기부터는 색소폰 이외의 관악기 리페어도 배울 수 있습니다.
