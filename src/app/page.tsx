@@ -8,6 +8,8 @@ import Footer from './Footer';
 
 import { Suspense } from 'react';
 import Reveal from '@/components/Reveal';
+import Fixing from './Fixing';
+import Edu from './Edu';
 
 // 로딩 중 표시할 fallback UI
 const LoadingFallback = () => <div>Loading content...</div>;
@@ -55,8 +57,10 @@ export default function Home() {
         </Reveal>
 
         <Reveal>
-          <Pricing />
+          <Edu />
         </Reveal>
+        
+          <Fixing />
 
         <Reveal>
           <Contact />
