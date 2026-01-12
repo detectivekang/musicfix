@@ -1,4 +1,4 @@
-// src/app/Edu.tsx
+// src/app/OnSiteRepair.tsx
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
@@ -22,7 +22,7 @@ interface RepairGalleryProps {
 // ===============================
 // 재사용 가능한 갤러리 컴포넌트
 // ===============================
-// === Edu 쪽 RepairGallery 수정 ===
+// === OnSiteRepair 쪽 RepairGallery 수정 ===
 const RepairGallery = ({
   title,
   description,
@@ -160,9 +160,9 @@ const LightboxModal = ({
 };
 
 // ===============================
-// Edu 페이지
+// OnSiteRepair 페이지
 // ===============================
-export default function Edu() {
+export default function OnSiteRepair() {
   const [lightbox, setLightbox] = useState<GalleryImage | null>(null);
 
   const handleImageClick = useCallback(
@@ -186,7 +186,7 @@ export default function Edu() {
   }, []);
 
   return (
-    <section id="edu" className="bg-light py-5">
+    <section id="onSiteRepair" className="bg-light py-5">
       <LightboxModal
         isOpen={!!lightbox}
         currentImage={lightbox}
@@ -195,7 +195,7 @@ export default function Edu() {
       />
 
       <div className="container">
-        <h2 className="fw-bold text-center mb-5">색소폰 리페어 교육</h2>
+        <h2 className="fw-bold text-center mb-5">출장 방문 수리</h2>
 
         <div className="row">
           <div className="col-12">
@@ -203,24 +203,18 @@ export default function Edu() {
               title="경복대학교(남양주캠퍼스) 색소폰 리페어 과정"
               description={
                 <>
-                  일본에서 전문적으로 배운 커리큘럼 과 현장경험을 바탕으로 
+                  학교 관악부 , 색소폰동호회 및 학원 , 군악대 등에 직접방문하여 수리하고 있습니다. 
                   <br />
-                  경복대학교(남양주)에서 색소폰 리페어를 체계적으로 지도하고 있습니다.
+                  전문가가 직접찾아가고 목관악기 와 금관악기 모두 수리가 가능하며 
                   <br />
-                  1학기- 분해 조립, 악기구조이해 ,밸런스조정 ,패드 콜크 펠트교체방법,스프링교체,키오프닝조절 등
-                  <br />
-                  2학기- 납땜작업 ,덴트 ,색소폰의 오버홀 ,그외관악기리페어(희망자에 한함)
+                  오랜출장수리 경험을 바탕으로 신속하고 편리한 방문수리를 약속드립니다.
                   <br />
                   <br />
-                  <strong>입학문의 : 010-2650-4483</strong>
-                  <br />
-                  자세한 수업풍경은 유튜브에서 보실 수 있습니다.
-                  <br />
-                  (관악기전동헌 검색)
+                  <strong>출장수리 문의 010-2650-4483</strong>
                 </>
               }
-              imageCount={6}
-              imageBaseUrl="edu/repair"
+              imageCount={7}
+              imageBaseUrl="onSiteRepair/on_site_repair"
               onImageClick={handleImageClick}
             />
           </div>

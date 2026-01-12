@@ -9,6 +9,7 @@ import { Suspense } from 'react';
 import Reveal from '@/components/Reveal';
 import Fixing from './Fixing';
 import Edu from './Edu';
+import OnSiteRepair from './OnSiteRepair';
 
 // 로딩 중 표시할 fallback UI
 const LoadingFallback = () => <div>Loading content...</div>;
@@ -53,6 +54,10 @@ export default function Home() {
 
         <Reveal>
           <History />
+        </Reveal>
+
+        <Reveal>
+          <OnSiteRepair />
         </Reveal>
 
         <Reveal>

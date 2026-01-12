@@ -1,4 +1,5 @@
 "use client";
+import { ReactNode } from "react";
 import styles from "./Hero.module.css";
 import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
@@ -15,7 +16,7 @@ interface GalleryImage {
 
 interface RepairGalleryProps {
   title: string;
-  description: string;
+  description: ReactNode;
   imageCount: number;
   imageBaseUrl: string;
   onImageClick: (imageInfo: GalleryImage) => void;
@@ -208,8 +209,14 @@ export default function Fixing() {
             <div className="row g-4">
               <div className="col-12">
                 <RepairGallery
-                  title="섹소폰의 오버홀"
-                  description="전체 분해 세척, 연주 테스트까지 완료"
+                  title="색소폰의 오버홀"
+                  description={
+                    <>
+                    세척 ,바디수평, 키수평 , 키유격제거 ,패드 콜크 펠트 교체, 넥테넌조정 정밀세팅등
+                    <br />
+                    색소폰전공자가 연주 테스트까지 완료
+                    </> 
+                  }
                   imageCount={8}
                   imageBaseUrl="woodwind/overhaul"
                   onImageClick={handleImageClick}
@@ -226,8 +233,8 @@ export default function Fixing() {
               </div>
               <div className="col-12">
                 <RepairGallery
-                  title="패드클리닝"
-                  description="전체분해 세척 작업 시 패드도 클리닝"
+                  title="패드 클리닝"
+                  description="전체분해 세척 작업시 패드클리닝을 통해 패드의 수명을 연장"
                   imageCount={2}
                   imageBaseUrl="woodwind/cleaning_pad"
                   onImageClick={handleImageClick}
@@ -236,7 +243,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="불량 패드교체"
-                  description="불량인 패드를 교체합니다."
+                  description="부분적으로 수리할경우 불량인 패드는 교체합니다."
                   imageCount={3}
                   imageBaseUrl="woodwind/changing_pad"
                   onImageClick={handleImageClick}
@@ -245,7 +252,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="덴트 작업"
-                  description="낙상사고 등 덴트 최소화 작업"
+                  description="낙상사고 등으로 인한 덴트작업"
                   imageCount={2}
                   imageBaseUrl="woodwind/cleaning_dent"
                   onImageClick={handleImageClick}
@@ -254,7 +261,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="클라리넷 오버홀 및 크랙 수리"
-                  description="전체 분해 세척 및 크랙 수리 진행"
+                  description="전체분해세척 , 키광택작업, 톤홀수정 , 패드 콜크전체교체 , 크랙수리등"
                   imageCount={6}
                   imageBaseUrl="woodwind/clarinet"
                   onImageClick={handleImageClick}
@@ -263,7 +270,7 @@ export default function Fixing() {
               <div className="col-12">
                 <RepairGallery
                   title="땜 작업 (용접)"
-                  description="납, 은, 동땜으로 부품 복원"
+                  description="용접부위에 맞게 납,은,동땜으로 작업"
                   imageCount={4}
                   imageBaseUrl="woodwind/soldering"
                   onImageClick={handleImageClick}

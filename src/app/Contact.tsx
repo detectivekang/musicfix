@@ -75,7 +75,9 @@ export default function Contact() {
               <li><strong>주소</strong>: 충청남도 서산시 덕지천로 68, 1층 (석남동 54‑3)</li>
               <li><strong>전화</strong>: 010-2650-4483</li>
               <li><strong>kakao</strong>: jdhjdh83</li>
-              <li><strong>이메일</strong>: hello@musicfix.kr</li>
+              <li><strong>이메일</strong>: jdhjdh83@gmail.com</li>
+              <li><strong>페이스북</strong>: https://www.facebook.com/profile.php?id=100080633495147</li>
+
               <li>
                 <a href="https://www.youtube.com/@repair4483" target="_blank">
                   <img src="https://littledeep.com/wp-content/uploads/2020/09/youtube-icon-style.png" width="40" alt="YouTube 채널 바로가기"/>
@@ -94,18 +96,14 @@ export default function Contact() {
               <h3>서비스 안내</h3>
               </div>
               <div className="mb-3">
-              분야별로 전문 수리센터를 갖추고 있습니다.
+              목관 금관 장르를 뛰어넘어 수리하고 있습니다.
               </div>
               <div className="mb-3">
-              근무시간 : 09:00~18:00<br/>
-              점심시간 : 12:00~ 13:00<br/>
-              휴무일 : 공휴일 토,일요일
+              출장 및 강의 등으로 부재중일 경우가 많습니다.
               </div>
               <div className="mb-3">
-              취급업무 : 방문 수리, 택배 수리 , 출장수리<br/>
-              (디지털 피아노에 한정)<br/>
-              주차 : 충청남도 서산시 덕지천로 68, 1층 (석남동 54‑3) 주차장 <br/>
-              ( 관악기수리공방 제이디라보 1층 주차해주세요)<br/>
+              <strong>방문전에는 꼭 연락부탁드립니다.</strong><br/>
+              주차 : 충남 서산시 덕지천로 68 , 1층 매장앞공터
               </div>
             </div>
           </div>
