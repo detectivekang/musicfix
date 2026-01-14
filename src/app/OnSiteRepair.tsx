@@ -200,7 +200,7 @@ export default function OnSiteRepair() {
         <div className="row">
           <div className="col-12">
             <RepairGallery
-              title="경복대학교(남양주캠퍼스) 색소폰 리페어 과정"
+              title="출장 방문 수리"
               description={
                 <>
                   학교 관악부 , 색소폰동호회 및 학원 , 군악대 등에 직접방문하여 수리하고 있습니다. 
