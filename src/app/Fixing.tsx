@@ -43,7 +43,9 @@ const RepairGallery = ({
     <h5 className="fw-bold mb-3 text-start text-primary">
       {title} ({imageCount}컷)
     </h5>
-    <p className="small text-muted text-start border-bottom pb-2 mb-3">{description}</p>
+    <p className="small text-muted text-start border-bottom pb-2 mb-3">
+      {description}
+    </p>
 
     <div className="row g-2">
       {Array.from({ length: imageCount }).map((_, index) => (
@@ -56,7 +58,12 @@ const RepairGallery = ({
               cursor: "pointer",
             }}
             onClick={() =>
-              onImageClick({ index, count: imageCount, baseUrl: imageBaseUrl, itemTitle: title })
+              onImageClick({
+                index,
+                count: imageCount,
+                baseUrl: imageBaseUrl,
+                itemTitle: title,
+              })
             }
           >
             <Image
@@ -75,7 +82,12 @@ const RepairGallery = ({
 // ===============================
 // Lightbox 모달
 // ===============================
-const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }: LightboxModalProps) => {
+const LightboxModal = ({
+  isOpen,
+  currentImage,
+  onClose,
+  onNavigate,
+}: LightboxModalProps) => {
   useEffect(() => {
     if (!isOpen) return;
     const handleEscape = (event: KeyboardEvent) => {
@@ -117,7 +129,14 @@ const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }: LightboxMo
               </button>
             )}
 
-            <div style={{ position: "relative", width: "100%", height: "80vh", margin: "0 auto" }}>
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                height: "80vh",
+                margin: "0 auto",
+              }}
+            >
               <Image
                 src={`/musicfix/images/${baseUrl}_${index + 1}.jpg`}
                 alt={`${itemTitle} 사진 ${index + 1}`}
@@ -149,13 +168,17 @@ export default function Fixing() {
   const [activeTab, setActiveTab] = useState<"woodwind" | "brass">("woodwind");
   const [lightbox, setLightbox] = useState<GalleryImage | null>(null);
 
-  const handleImageClick = useCallback((imageInfo: GalleryImage) => setLightbox(imageInfo), []);
+  const handleImageClick = useCallback(
+    (imageInfo: GalleryImage) => setLightbox(imageInfo),
+    [],
+  );
   const handleCloseLightbox = useCallback(() => setLightbox(null), []);
   const handleNavigate = useCallback((direction: number) => {
     setLightbox((prev) => {
       if (!prev) return null;
       const newIndex = prev.index + direction;
-      if (newIndex >= 0 && newIndex < prev.count) return { ...prev, index: newIndex };
+      if (newIndex >= 0 && newIndex < prev.count)
+        return { ...prev, index: newIndex };
       return prev;
     });
   }, []);
@@ -173,11 +196,16 @@ export default function Fixing() {
         <h2 className="fw-bold text-center mb-5">악기 수리 전문가 서비스</h2>
 
         {/* 탭 네비게이션 */}
-        <ul className="nav nav-pills justify-content-center mb-5" role="tablist">
+        <ul
+          className="nav nav-pills justify-content-center mb-5"
+          role="tablist"
+        >
           <li className="nav-item" role="presentation">
             <button
               className={`nav-link fs-5 me-2 ${
-                activeTab === "woodwind" ? "active bg-info text-dark" : "btn-outline-secondary"
+                activeTab === "woodwind"
+                  ? "active bg-info text-dark"
+                  : "btn-outline-secondary"
               }`}
               onClick={() => setActiveTab("woodwind")}
               type="button"
@@ -188,7 +216,9 @@ export default function Fixing() {
           <li className="nav-item" role="presentation">
             <button
               className={`nav-link fs-5 ${
-                activeTab === "brass" ? "active bg-warning text-dark" : "btn-outline-secondary"
+                activeTab === "brass"
+                  ? "active bg-warning text-dark"
+                  : "btn-outline-secondary"
               }`}
               onClick={() => setActiveTab("brass")}
               type="button"
@@ -201,7 +231,9 @@ export default function Fixing() {
         {/* 탭 내용 */}
         <div className="tab-content border p-4 rounded bg-light shadow-lg">
           {/* 목관악기 탭 */}
-          <div className={`tab-pane fade ${activeTab === "woodwind" ? "show active" : ""}`}>
+          <div
+            className={`tab-pane fade ${activeTab === "woodwind" ? "show active" : ""}`}
+          >
             <h4 className="fw-bold text-info mb-4 border-bottom pb-2">
               ✅ 목관악기 (색소폰, 클라리넷) 상세 수리 내역
             </h4>
@@ -212,12 +244,13 @@ export default function Fixing() {
                   title="색소폰의 오버홀"
                   description={
                     <>
-                    세척 ,바디수평, 키수평 , 키유격제거 ,패드 콜크 펠트 교체, 넥테넌조정 정밀세팅등
-                    <br />
-                    색소폰전공자가 연주 테스트까지 완료
-                    </> 
+                      세척 ,바디수평, 키수평 , 키유격제거 ,패드 콜크 펠트 교체,
+                      넥테넌조정 정밀세팅등
+                      <br />
+                      색소폰전공자가 연주 테스트까지 완료
+                    </>
                   }
-                  imageCount={8}
+                  imageCount={9}
                   imageBaseUrl="woodwind/overhaul"
                   onImageClick={handleImageClick}
                 />
@@ -244,7 +277,7 @@ export default function Fixing() {
                 <RepairGallery
                   title="불량 패드교체"
                   description="부분적으로 수리할경우 불량인 패드는 교체합니다."
-                  imageCount={3}
+                  imageCount={6}
                   imageBaseUrl="woodwind/changing_pad"
                   onImageClick={handleImageClick}
                 />
@@ -262,7 +295,7 @@ export default function Fixing() {
                 <RepairGallery
                   title="클라리넷 오버홀 및 크랙 수리"
                   description="전체분해세척 , 키광택작업, 톤홀수정 , 패드 콜크전체교체 , 크랙수리등"
-                  imageCount={6}
+                  imageCount={5}
                   imageBaseUrl="woodwind/clarinet"
                   onImageClick={handleImageClick}
                 />
@@ -271,7 +304,7 @@ export default function Fixing() {
                 <RepairGallery
                   title="땜 작업 (용접)"
                   description="용접부위에 맞게 납,은,동땜으로 작업"
-                  imageCount={4}
+                  imageCount={5}
                   imageBaseUrl="woodwind/soldering"
                   onImageClick={handleImageClick}
                 />
@@ -280,7 +313,9 @@ export default function Fixing() {
           </div>
 
           {/* 금관악기 탭 */}
-          <div className={`tab-pane fade ${activeTab === "brass" ? "show active" : ""}`}>
+          <div
+            className={`tab-pane fade ${activeTab === "brass" ? "show active" : ""}`}
+          >
             <h4 className="fw-bold text-warning mb-4 border-bottom pb-2">
               ✅ 금관악기 (트럼펫, 튜바 등) 상세 수리 내역
             </h4>
@@ -290,7 +325,7 @@ export default function Fixing() {
                 <RepairGallery
                   title="트럼펫 분해세척 광택작업"
                   description="전체 분해 세척, 녹 제거, 광택"
-                  imageCount={3}
+                  imageCount={5}
                   imageBaseUrl="brass/trumpet_cleaning"
                   onImageClick={handleImageClick}
                 />
@@ -308,7 +343,7 @@ export default function Fixing() {
                 <RepairGallery
                   title="튜바 슬라이드 세척 및 녹 제거"
                   description="부드러운 움직임 위해 세척 및 녹 제거"
-                  imageCount={2}
+                  imageCount={8}
                   imageBaseUrl="brass/tuba_slide"
                   onImageClick={handleImageClick}
                 />
