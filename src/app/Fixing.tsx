@@ -60,7 +60,7 @@ const RepairGallery = ({
             }
           >
             <Image
-              src={`/musicfix/images/${imageBaseUrl}_${index + 1}.png`}
+              src={`/musicfix/images/${imageBaseUrl}_${index + 1}.jpg`}
               alt={`${title} 사진 ${index + 1}`}
               fill
               style={{ objectFit: "cover", borderRadius: "0.25rem" }}
@@ -119,7 +119,7 @@ const LightboxModal = ({ isOpen, currentImage, onClose, onNavigate }: LightboxMo
 
             <div style={{ position: "relative", width: "100%", height: "80vh", margin: "0 auto" }}>
               <Image
-                src={`/musicfix/images/${baseUrl}_${index + 1}.png`}
+                src={`/musicfix/images/${baseUrl}_${index + 1}.jpg`}
                 alt={`${itemTitle} 사진 ${index + 1}`}
                 fill
                 style={{ objectFit: "contain" }}
