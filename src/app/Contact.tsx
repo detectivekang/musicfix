@@ -123,6 +123,14 @@ export default function Contact() {
                     alt="YouTube 채널 바로가기"
                   />
                 </a>
+                <a href="https://blog.naver.com/jdhjdh83" target="_blank">
+                  <img
+                    src="https://i.namu.wiki/i/gE5f3Z8vuiPLK2r0CrugjuoH5yStjqVYo5BIrJPPUYsXkqHf1PPvt572rXBEFcIGcw2eoKhwhWuZ0tIEaw8spQ.svg"
+                    width="40"
+                    style={{ margin: "5px" }}
+                    alt="네이버 블로그 바로가기"
+                  />
+                </a>
               </li>
             </ul>
           </div>

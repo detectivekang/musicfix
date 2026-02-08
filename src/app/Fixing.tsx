@@ -357,6 +357,15 @@ export default function Fixing() {
                   onImageClick={handleImageClick}
                 />
               </div>
+              <div className="col-12">
+                <RepairGallery
+                  title="트럼본 세척 슬라이드조정"
+                  description="트럼본의 전체분해 세척 및 슬라이드 수평작업"
+                  imageCount={2}
+                  imageBaseUrl="brass/trombone"
+                  onImageClick={handleImageClick}
+                />
+              </div>
             </div>
           </div>
         </div>

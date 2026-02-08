@@ -56,15 +56,15 @@ export default function Home() {
           <History />
         </Reveal>
 
-        <Reveal>
-          <OnSiteRepair />
-        </Reveal>
+        <Fixing />
 
         <Reveal>
           <Edu />
-        </Reveal>
+        </Reveal> 
         
-          <Fixing />
+        <Reveal>
+          <OnSiteRepair />
+        </Reveal>
 
         <Reveal>
           <Contact />
