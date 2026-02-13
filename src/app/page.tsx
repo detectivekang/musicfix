@@ -21,11 +21,11 @@ export const metadata = {
   openGraph: {
     title: "제이디라보",
     description: "제이디라보 — 관악수리공방",
-    url: "https://detectivekang.github.io/musicfix/",
+    url: "https://detectivekang.github.io/",
     type: "website",
     images: [
       {
-        url: "https://detectivekang.github.io/musicfix/logo.jpg",
+        url: "https://detectivekang.github.io/logo.jpg",
         width: 1200,
         height: 630,
       },
@@ -35,7 +35,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "제이디라보",
     description: "제이디라보 — 관악수리공방",
-    images: ["https://detectivekang.github.io/musicfix/logo.jpg"],
+    images: ["https://detectivekang.github.io/logo.jpg"],
   },
 };
 
