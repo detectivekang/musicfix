@@ -32,7 +32,7 @@ const RepairGallery = ({
 }: RepairGalleryProps) => (
   <div className="card shadow-sm h-100 border-0 mb-4 p-3 bg-white">
     <h5 className="fw-bold mb-3 text-start text-primary">
-      {title} ({imageCount}컷)
+      {title} ({imageCount})
     </h5>
 
     <div className="small text-muted text-start border-bottom pb-2 mb-3">

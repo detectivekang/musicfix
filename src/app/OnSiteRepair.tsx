@@ -32,7 +32,7 @@ const RepairGallery = ({
 }: RepairGalleryProps) => (
   <div className="card shadow-sm h-100 border-0 mb-4 p-3 bg-white">
     <h5 className="fw-bold mb-3 text-start text-primary">
-      {title} ({imageCount}컷)
+      {title} ({imageCount})
     </h5>
 
     <div className="small text-muted text-start border-bottom pb-2 mb-3">
@@ -47,7 +47,7 @@ const RepairGallery = ({
             style={{
               position: "relative",
               width: "100%",
-              paddingTop: "100%", /* 1:1 비율 유지 */
+              paddingTop: "100%" /* 1:1 비율 유지 */,
               cursor: "pointer",
             }}
             onClick={() =>
@@ -133,7 +133,14 @@ const LightboxModal = ({
             )}
 
             {/* 이미지 컨테이너 */}
-            <div style={{ position: "relative", width: "100%", height: "80vh", margin: "0 auto" }}>
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                height: "80vh",
+                margin: "0 auto",
+              }}
+            >
               <Image
                 src={`/images/${baseUrl}_${index + 1}.jpg`}
                 alt={`${itemTitle} 사진 ${index + 1}`}
@@ -165,12 +172,9 @@ const LightboxModal = ({
 export default function OnSiteRepair() {
   const [lightbox, setLightbox] = useState<GalleryImage | null>(null);
 
-  const handleImageClick = useCallback(
-    (imageInfo: GalleryImage) => {
-      setLightbox(imageInfo);
-    },
-    []
-  );
+  const handleImageClick = useCallback((imageInfo: GalleryImage) => {
+    setLightbox(imageInfo);
+  }, []);
 
   const handleClose = useCallback(() => {
     setLightbox(null);
@@ -203,11 +207,14 @@ export default function OnSiteRepair() {
               title="출장 방문 수리"
               description={
                 <>
-                  학교 관악부 , 색소폰동호회 및 학원 , 군악대 등에 직접방문하여 수리하고 있습니다. 
+                  학교 관악부 , 색소폰동호회 및 학원 , 군악대 등에 직접방문하여
+                  수리하고 있습니다.
                   <br />
-                  전문가가 직접찾아가고 목관악기 와 금관악기 모두 수리가 가능하며 
+                  전문가가 직접찾아가고 목관악기 와 금관악기 모두 수리가
+                  가능하며
                   <br />
-                  오랜출장수리 경험을 바탕으로 신속하고 편리한 방문수리를 약속드립니다.
+                  오랜출장수리 경험을 바탕으로 신속하고 편리한 방문수리를
+                  약속드립니다.
                   <br />
                   <br />
                   <strong>출장수리 문의 010-2650-4483</strong>
