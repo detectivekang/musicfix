@@ -125,7 +125,7 @@ export default function Contact() {
                 </a>
                 <a href="https://blog.naver.com/jdhjdh83" target="_blank">
                   <img
-                    src="https://i.namu.wiki/i/gE5f3Z8vuiPLK2r0CrugjuoH5yStjqVYo5BIrJPPUYsXkqHf1PPvt572rXBEFcIGcw2eoKhwhWuZ0tIEaw8spQ.svg"
+                    src="https://i.namu.wiki/i/vjHC8McQgTWhclxnfPOFXrQI7W7gNsl5K8yqxBepfXyVFbRJRHgEH60OsAde9rbMaQi92NJy7N1VOvHv5GhbKg.svg"
                     width="40"
                     style={{ margin: "5px" }}
                     alt="네이버 블로그 바로가기"
