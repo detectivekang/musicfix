@@ -16,11 +16,11 @@ const LoadingFallback = () => <div>Loading content...</div>;
 
 // ⭐ Open Graph + Twitter 썸네일 설정
 export const metadata = {
-  title: "제이디라보",
-  description: "제이디라보 — 관악수리공방",
+  title: "제이디라보 | 목관·금관악기 수리 및 색소폰 리페어 교육",
+  description: "목관 금관악기 수리 전문 제이디라보입니다. 색소폰 리페어 교육 및 전국 출장 수리 가능. 일본 쿠니타치 음악원 출신 전문가의 정밀한 서비스를 만나보세요.",
   openGraph: {
-    title: "제이디라보",
-    description: "제이디라보 — 관악수리공방",
+    title: "제이디라보 - 관악기 수리 전문",
+    description: "목관 금관악기 수리 전문, 색소폰 리페어 교육, 전국 출장 수리. 악기의 가치를 되살리는 정밀 리페어 서비스.",
     url: "https://detectivekang.github.io/",
     type: "website",
     images: [
@@ -33,8 +33,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "제이디라보",
-    description: "제이디라보 — 관악수리공방",
+    title: "제이디라보 - 관악기 수리 전문",
+    description: "목관 금관악기 수리 전문, 색소폰 리페어 교육, 전국 출장 수리. 악기의 가치를 되살리는 정밀 리페어 서비스.",
     images: ["https://detectivekang.github.io/logo.jpg"],
   },
 };
