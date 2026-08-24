@@ -25,22 +25,25 @@ export default function About() {
             </p>
             <ul className="list-unstyled lh-lg">
               <li>
-                <a
-                  href="https://www.youtube.com/watch?v=RQ8TuZLOtWQ&t=45s"
-                  target="_blank"
-                >
-                  📺TJB대전방송 관악기수리전문가 방송출연
+                <a className="fw-bold mb-3 text-start text-primary" href="#edu">
+                  <h5>🎷경복대학교 색소폰리페어과정 개강정보</h5>
                 </a>
               </li>
               <li>
-                <a href="#edu">🎷경복대학교 색소폰리페어과정 개강정보</a>
+                <a
+                  className="fw-bold mb-3 text-start text-primary"
+                  href="https://www.youtube.com/watch?v=RQ8TuZLOtWQ&t=45s"
+                  target="_blank"
+                >
+                  <h5>📺TJB대전방송 관악기수리전문가 방송출연</h5>
+                </a>
               </li>
               <li>
                 <a
                   href="https://www.youtube.com/watch?v=cFyYy201eL0&list=PLiwEetINyxjqXJ7tD49KFR-O6HlHdcvyR&index=13"
                   target="_blank"
                 >
-                  🔧출장수리 Vlog 악기수리가 필요하면 어디든지갑니다!
+                  <h5>🔧출장수리 Vlog 악기수리가 필요하면 어디든지갑니다!</h5>
                 </a>
               </li>
             </ul>
