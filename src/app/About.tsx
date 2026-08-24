@@ -33,12 +33,7 @@ export default function About() {
                 </a>
               </li>
               <li>
-                <a
-                  href="https://www.youtube.com/watch?v=nKGDIoJD950&list=PLiwEetINyxjrgncSIjN-CIutjAOXHvsTM"
-                  target="_blank"
-                >
-                  🎷경복대학교 색소폰리페어과정 개강정보
-                </a>
+                <a href="#edu">🎷경복대학교 색소폰리페어과정 개강정보</a>
               </li>
               <li>
                 <a

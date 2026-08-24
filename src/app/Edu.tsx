@@ -47,7 +47,7 @@ const RepairGallery = ({
             style={{
               position: "relative",
               width: "100%",
-              paddingTop: "100%", /* 1:1 비율 유지 */
+              paddingTop: "100%" /* 1:1 비율 유지 */,
               cursor: "pointer",
             }}
             onClick={() =>
@@ -133,7 +133,14 @@ const LightboxModal = ({
             )}
 
             {/* 이미지 컨테이너 */}
-            <div style={{ position: "relative", width: "100%", height: "80vh", margin: "0 auto" }}>
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                height: "80vh",
+                margin: "0 auto",
+              }}
+            >
               <Image
                 src={`/images/${baseUrl}_${index + 1}.jpg`}
                 alt={`${itemTitle} 사진 ${index + 1}`}
@@ -165,12 +172,9 @@ const LightboxModal = ({
 export default function Edu() {
   const [lightbox, setLightbox] = useState<GalleryImage | null>(null);
 
-  const handleImageClick = useCallback(
-    (imageInfo: GalleryImage) => {
-      setLightbox(imageInfo);
-    },
-    []
-  );
+  const handleImageClick = useCallback((imageInfo: GalleryImage) => {
+    setLightbox(imageInfo);
+  }, []);
 
   const handleClose = useCallback(() => {
     setLightbox(null);
@@ -203,13 +207,18 @@ export default function Edu() {
               title="경복대학교(남양주캠퍼스) 색소폰 리페어 과정"
               description={
                 <>
-                  일본에서 전문적으로 배운 커리큘럼 과 현장경험을 바탕으로 
+                  <strong>2026년 9월 30일 개강!!!</strong>
                   <br />
-                  경복대학교(남양주)에서 색소폰 리페어를 체계적으로 지도하고 있습니다.
+                  일본 유명 리페어학교의 커리큘럼 과 현장경험을 바탕으로
                   <br />
-                  1학기- 분해 조립, 악기구조이해 ,밸런스조정 ,패드 콜크 펠트교체방법,스프링교체,키오프닝조절 등
+                  경복대학교(남양주)에서 색소폰 리페어를 체계적으로 지도하고
+                  있습니다.
                   <br />
-                  2학기- 납땜작업 ,덴트 ,색소폰의 오버홀 ,그외관악기리페어(희망자에 한함)
+                  1학기- 분해 조립, 악기구조이해 ,밸런스조정 ,패드 콜크
+                  펠트교체방법,스프링교체,키오프닝조절 등
+                  <br />
+                  2학기- 납땜작업 ,덴트 ,색소폰의 오버홀
+                  ,그외관악기리페어(희망자에 한함)
                   <br />
                   <br />
                   <strong>입학문의 : 010-2650-4483</strong>
