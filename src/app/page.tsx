@@ -4,6 +4,7 @@ import About from './About';
 import History from './History';
 import Contact from './Contact';
 import Footer from './Footer';
+import Header from '@/components/Header';
 
 import { Suspense } from 'react';
 import Reveal from '@/components/Reveal';
@@ -43,10 +44,9 @@ export default function Home() {
   return (
     <>
       <Suspense fallback={<LoadingFallback />}>
+        <Header />
 
-        <Reveal>
-          <Hero />
-        </Reveal>
+        <Hero />
 
         <Reveal>
           <About />

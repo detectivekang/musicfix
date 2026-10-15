@@ -1,31 +1,23 @@
-// === components/Hero.tsx ===
-import styles from './Hero.module.css';
+import Image from "next/image";
+
 export default function Hero() {
   return (
-    <header
-      id="hero"
-      className="d-flex align-items-center text-white"
-      style={{
-        background:
-          // 'url("https://previews.123rf.com/images/xavigm/xavigm1801/xavigm180100122/92856466-instrument-in-wood-background.jpg") center/cover no-repeat',
-          'url("/images/logo.jpg") center/cover no-repeat',
-      }}
-    >
-      <div
-        className={`d-flex align-items-center text-white ${styles.heroContainer}`}
-        style={{ background: 'rgba(0, 0, 0, 0.6)'}}
-      >
-        {/* <div className="container text-center py-5">
-          <h1 className="display-4 fw-bold">고장 난 악기, 우리가 고칩니다</h1>
-          <p className="lead mb-4">노이즈 제거 · 음질 리마스터링 · 멀티 포맷 지원</p>
-          <p className="lead mb-4 fw-bold">
-            관악기전문수리사 전동헌[제이디라보]
-          </p>
-          <a href="#contact" className="btn btn-primary btn-lg">
-            문의하기
-          </a>
-        </div> */}
+    <section id="hero" className="hero">
+      <div className="wrap hero-grid">
+        <div>
+          <p className="hero-sub">관악기수리공방</p>
+          <h1>제이디라보</h1>
+          <p className="hero-lead">관악기의 모든 것, 관악기 수리 전문가</p>
+          <p className="hero-by">관악기전문수리사 전동헌</p>
+          <div className="hero-cta">
+            <a className="btn primary" href="tel:010-2650-4483">010-2650-4483</a>
+            <a className="btn" href="#fixing-service">수리 사례 보기</a>
+          </div>
+        </div>
+        <div className="hero-logo">
+          <Image src="/images/logo.jpg" alt="제이디라보 JD's LABO 로고" width={800} height={500} priority style={{ width: "100%", height: "auto" }} />
+        </div>
       </div>
-    </header>
+    </section>
   );
 }

@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../lib/firebase";
-import { useSearchParams } from "next/navigation";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -17,18 +16,6 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
-
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const packageParam = searchParams.get("package");
-    if (
-      packageParam &&
-      ["베이직", "프리미엄", "커스텀"].includes(packageParam)
-    ) {
-      setFormData((prev) => ({ ...prev, gubun: packageParam }));
-    }
-  }, [searchParams]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -60,100 +47,39 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-light py-5">
-      <div className="container">
-        <h2 className="fw-bold text-center mb-5">오시는 길 · 연락처</h2>
-
-        <div className="row g-5">
-          {/* 왼쪽 지도 */}
-          <div className="col-lg-6">
-            <div className="ratio ratio-16x9 rounded-4 shadow">
+    <section id="contact" className="section alt">
+      <div className="wrap">
+        <h2 className="section-title">오시는 길 · 연락처</h2>
+        <div className="contact-grid">
+          <div>
+            <div className="map">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3213.929273432377!2d126.455350415465!3d36.77040090000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357a5d22784bec1f%3A0xcde5b2e72dca1142!2z6rWt64-E7Jqw7Iqk7J20IO2ctOyynOycoCDslYTrnoDroZwg7YyM7ISk!5e0!3m2!1sko!2skr!4v1720164801234!5m2!1sko!2skr"
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
+                title="제이디라보 위치 지도"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-            <ul className="list-unstyled mt-4 lh-lg">
-              <li>
-                <strong>주소</strong>: 충청남도 서산시 덕지천로 68, 1층 (석남동
-                54‑3)
-              </li>
-              <li>
-                <strong>전화</strong>: 010-2650-4483
-              </li>
-              <li>
-                <strong>kakao</strong>: jdhjdh83
-              </li>
-              <li>
-                <strong>이메일</strong>: jdhjdh83@gmail.com
-              </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/profile.php?id=100080633495147"
-                  target="_blank"
-                >
-                  <img
-                    src="/images/icon/facebook_icon.png"
-                    width="45"
-                    style={{ margin: "5px" }}
-                    alt="FaceBook"
-                  />
-                </a>
-                <a href="https://www.youtube.com/@repair4483" target="_blank">
-                  <img
-                    src="/images/icon/youtube_icon.png"
-                    width="45"
-                    style={{ margin: "5px" }}
-                    alt="YouTube 채널 바로가기"
-                  />
-                </a>
-                <a
-                  href="https://www.instagram.com/jd_labo_repair/"
-                  target="_blank"
-                >
-                  <img
-                    src="/images/icon/instagram_icon.png"
-                    width="50"
-                    style={{ margin: "5px" }}
-                    alt="YouTube 채널 바로가기"
-                  />
-                </a>
-                <a href="https://blog.naver.com/jdhjdh83" target="_blank">
-                  <img
-                    src="/images/icon/blog_icon.PNG"
-                    width="40"
-                    style={{ margin: "5px" }}
-                    alt="네이버 블로그 바로가기"
-                  />
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* 오른쪽 폼 */}
-          <div className="col-lg-6">
-            <div className="bg-white p-4 rounded-4 shadow">
-              <div className="mb-3">
-                <h3>서비스 안내</h3>
-              </div>
-              <div className="mb-3">
-                목관 금관 장르를 뛰어넘어 수리하고 있습니다.
-              </div>
-              <div className="mb-3">
-                출장 및 강의 등으로 부재중일 경우가 많습니다.
-              </div>
-              <div className="mb-3">
-                <strong>방문전에는 꼭 연락부탁드립니다.</strong>
-                <br />
-                주차 : 충남 서산시 덕지천로 68 , 1층 매장앞공터
-              </div>
+            <dl className="info">
+              <div><dt>주소</dt><dd>충청남도 서산시 덕지천로 68, 1층 (석남동 54‑3)</dd></div>
+              <div><dt>전화</dt><dd><a href="tel:010-2650-4483">010-2650-4483</a></dd></div>
+              <div><dt>kakao</dt><dd>jdhjdh83</dd></div>
+              <div><dt>이메일</dt><dd><a href="mailto:jdhjdh83@gmail.com">jdhjdh83@gmail.com</a></dd></div>
+            </dl>
+            <div className="sns">
+              <a href="https://www.facebook.com/profile.php?id=100080633495147" target="_blank" rel="noreferrer"><img src="/images/icon/facebook_icon.png" alt="FaceBook" /></a>
+              <a href="https://www.youtube.com/@repair4483" target="_blank" rel="noreferrer"><img src="/images/icon/youtube_icon.png" alt="YouTube 채널 바로가기" /></a>
+              <a href="https://www.instagram.com/jd_labo_repair/" target="_blank" rel="noreferrer"><img src="/images/icon/instagram_icon.png" alt="인스타그램 바로가기" /></a>
+              <a href="https://blog.naver.com/jdhjdh83" target="_blank" rel="noreferrer"><img src="/images/icon/blog_icon.PNG" alt="네이버 블로그 바로가기" /></a>
             </div>
           </div>
+          <aside className="notice">
+            <h3>서비스 안내</h3>
+            <p>목관 금관 장르를 뛰어넘어 수리하고 있습니다.</p>
+            <p>출장 및 강의 등으로 부재중일 경우가 많습니다.</p>
+            <p><strong>방문전에는 꼭 연락부탁드립니다.</strong><br />주차 : 충남 서산시 덕지천로 68 , 1층 매장앞공터</p>
+          </aside>
           <form onSubmit={handleSubmit} style={{ display: "none" }}>
             <input
               name="gubun"
